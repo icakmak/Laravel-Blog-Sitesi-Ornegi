@@ -1,6 +1,6 @@
-<div class="col-lg-3">
+
         <div class="card">
-            <div class="card-header">
+            <div class="card-header bg-info text-center" style="font-weight: bold;color:#fff">
                 Kategoriler
             </div>
             <div class="card-body m-0 p-0">
@@ -27,4 +27,3 @@
                 </ul>
             </div>
         </div>
-    </div>

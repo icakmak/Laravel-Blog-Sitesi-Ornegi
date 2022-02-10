@@ -13,16 +13,13 @@
             <div class="row">
                 <div class="col-sm-3">
                     <img src="{{$art->image}}" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
-
                 </div>
                 <div class="col-sm-9">
                     <div class="post-titles">{{$art->title}}</div>
                     <div class="post-subs">{{Str::limit($art->content,150)}}</div>
                 </div>
             </div>
-
         </a>
-
         <div class="figure-caption row">
             <div class="col-sm-8"> Kategori : <a href="category/{{$art->getCategory->slug}}" class="a-link">{{$art->getCategory->name}}</a></div>
             <div class="col-sm-4 text-sm-end">{{$art->created_at->diffForHumans()}}</div>
@@ -35,6 +32,9 @@
     <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div>
 </div>
 
-
+<div class="col-lg-3">
 @include('front.widgets.categoryWidget')
+<hr>
+@include('front.widgets.populerWidget')
+</div>
 @endsection

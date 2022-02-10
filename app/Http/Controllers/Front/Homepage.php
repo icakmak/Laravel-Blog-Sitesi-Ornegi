@@ -9,20 +9,34 @@ use App\Http\Controllers\Controller;
 
 class Homepage extends Controller
 {
+    public function ortak()
+    {
+        $veri = [
+            'hits' => Article::orderBy('hit', 'Desc')->limit(5)->get(), // Db üzerinde en çok okunan ilk 5 yazı çekiliyor
+            'category' => Category::get() //Db üzerinden kategoriler çekiliyor
+        ];
+        return $veri;
+    }
+
+
     public function index()
     {
-        $data['articles'] = Article::orderBy('id', 'Desc')->get();
-        $data['categories'] = Category::get();
-
+        $veri = $this->ortak();
+        $data['articleHits'] = $veri['hits'];
+        $data['categories'] = $veri['category'];
+        $data['articles'] = Article::orderBy('id', 'Desc')->get(); //Db üzerindeki yazılar çekiliyor
         return view('front.homepage', $data);
     }
 
     public function single($slug)
     {
+        $veri = $this->ortak();
+        $data['articleHits'] = $veri['hits'];
+        $data['categories'] = $veri['category'];
+        //Slugdan Gelen deger db'de aranıyor ve array'a aktarılıyor
         $data['article'] = Article::where('slug', $slug)->first() ?? abort(404, 'Gitmek istediğiniz sayfa bulunamadı...');
-        //print_r($data['article']);
-        //die();
-        $data['categories'] = Category::get();
+        $data['article']->increment('hit'); //her görüntülenme sayısında hit 1 değer arttırılıyor
+
         return view('front.single', $data);
     }
 }
