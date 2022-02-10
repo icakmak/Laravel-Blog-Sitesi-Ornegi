@@ -9,8 +9,8 @@
 
 <hr>
 <p align="center">
-Bu Proje Laravel ile yapılmış bir PHP BLOG Sitesi Örneğidir.Kullanımı Gayet Basit Olan Bu Proje ile indirip Hostunuza Direk Atıp Kullanabilirsiniz.
+Bu Proje Laravel ile yapılmış bir PHP BLOG Sitesi Örneğidir.Kullanımı Gayet Basit Olan Bu Projeyi indirip Hostunuza Direk Atıp Kullanabilirsiniz.
 </p>
 <p>
-Gerekli Ayarları Kendinize Göre yaptığınızda kullanılabilir hale gelen bu Blog sistemi temiz kod mantığıyla yazılmış olup en basit şekilde kullanılabilir 
+Gerekli Ayarları yani veritabanı bilgilerini blog başlığı gibi bilgileri kendini bilgilerinizle değiştirdiğinizde Blog Siteniz Hazır Hale Gelecektir kullanılabilir hale gelen bu Blog sistemi temiz kod mantığıyla yazılmış olup en basit şekilde kullanılabilir 
 hale getirilmiştir</p>
