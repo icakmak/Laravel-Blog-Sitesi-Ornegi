@@ -30,12 +30,12 @@ class Homepage extends Controller
 
     public function single($category, $slug)
     {
-        Category::where('slug', $category)->first() ?? abort(404, 'Gitmek istediğiniz sayfa bulunamadı...'); //request'den gelen category ifadesi db'de yok ise hata sayfasına yönlendirmek için kullanılıyor
+        $category = Category::where('slug', $category)->first() ?? abort(404, 'Gitmek istediğiniz sayfa bulunamadı...'); //request'den gelen category ifadesi db'de yok ise hata sayfasına yönlendirmek için kullanılıyor
         $veri = $this->ortak();
         $data['articleHits'] = $veri['hits'];
         $data['categories'] = $veri['category'];
         //Slugdan Gelen deger db'de aranıyor ve array'a aktarılıyor
-        $data['article'] = Article::where('slug', $slug)->first() ?? abort(404, 'Gitmek istediğiniz sayfa bulunamadı...');
+        $data['article'] = Article::where('slug', $slug)->where('category_id', $category->id)->first() ?? abort(404, 'Gitmek istediğiniz sayfa bulunamadı...');
         $data['article']->increment('hit'); //her görüntülenme sayısında hit 1 değer arttırılıyor
 
         return view('front.single', $data);
