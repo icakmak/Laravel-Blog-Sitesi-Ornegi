@@ -28,8 +28,9 @@ class Homepage extends Controller
         return view('front.homepage', $data);
     }
 
-    public function single($slug)
+    public function single($category, $slug)
     {
+        Category::where('slug', $category)->first() ?? abort(404, 'Gitmek istediğiniz sayfa bulunamadı...');
         $veri = $this->ortak();
         $data['articleHits'] = $veri['hits'];
         $data['categories'] = $veri['category'];

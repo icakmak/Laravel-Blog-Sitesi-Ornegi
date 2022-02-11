@@ -15,4 +15,4 @@ use App\Http\Controllers\Front\Homepage;
 */
 
 Route::get('/', [Homepage::class, 'index'])->name('hamepage');
-Route::get('/post/{slug}', [Homepage::class, 'single'])->name('single');
+Route::get('/{category}/{slug}', [Homepage::class, 'single'])->name('single');

@@ -9,7 +9,7 @@
     <!-- Post preview-->
     @foreach ($articles as $art)
     <div class="post-preview">
-        <a href="{{route('single',$art->slug)}}">
+        <a href="{{route('single',[$art->getCategory->slug, $art->slug])}}">
             <div class="row">
                 <div class="col-sm-3">
                     <img src="{{$art->image}}" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
