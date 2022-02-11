@@ -30,7 +30,7 @@ class Homepage extends Controller
 
     public function single($category, $slug)
     {
-        Category::where('slug', $category)->first() ?? abort(404, 'Gitmek istediğiniz sayfa bulunamadı...');
+        Category::where('slug', $category)->first() ?? abort(404, 'Gitmek istediğiniz sayfa bulunamadı...'); //request'den gelen category ifadesi db'de yok ise hata sayfasına yönlendirmek için kullanılıyor
         $veri = $this->ortak();
         $data['articleHits'] = $veri['hits'];
         $data['categories'] = $veri['category'];
