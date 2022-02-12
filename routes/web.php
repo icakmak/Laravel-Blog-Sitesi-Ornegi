@@ -18,6 +18,7 @@ Route::get('/', [Homepage::class, 'index'])->name('hamepage');
 Route::get('/yazilar/sayfa', [Homepage::class, 'index']);
 Route::get('/kategori/{slug}', [Homepage::class, 'category'])->name('category');
 Route::get('/kategori/{slug}/sayfa', [Homepage::class, 'category']);
+Route::get('/Sayfa/{slug}', [Homepage::class, 'pages'])->name('pages');
 Route::get('/{category}/{slug}', [Homepage::class, 'single'])->name('single');
-Route::get('/hakkimizda', [Homepage::class, 'about'])->name('about');
-Route::get('/iletisim', [Homepage::class, 'contact'])->name('contact');
+
+//Route::get('/iletisim', [Homepage::class, 'contact'])->name('contact');
