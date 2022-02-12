@@ -7,7 +7,8 @@
 @section('content')
 
 <div class="col-lg-9 col-xl-7">
-    <img src="{{$article->image}}" alt="{{$article->title}}" width="700" height="auto">
+    <div class="text-center"><img src="{{$article->image}}" alt="{{$article->title}}" width="700" height="auto"></div>
+    
     <div class="text-center mt-2">
         <h4>{{$article->title}}</h4>
     </div>

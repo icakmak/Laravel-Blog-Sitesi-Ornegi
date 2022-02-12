@@ -4,7 +4,8 @@
 @section('img',$page->image)
 @section('content')
 <div class="col-lg-9 col-xl-7">
-    <img src="{{$page->image}}" alt="{{$page->title}}" width="700" height="auto" class="mb-4">
+    <div  class="mb-4 text-center"> <img src="{{$page->image}}" alt="{{$page->title}}" width="700" height="auto"></div>
+   
     <h3>{{$page->title}}</h3>
     <hr>
     {{$page->content}}
