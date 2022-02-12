@@ -31,7 +31,8 @@ class Homepage extends Controller
         $veri = $this->ortak();
         $data['articleHits'] = $veri['hits'];
         $data['categories'] = $veri['category'];
-        $data['articles'] = Article::orderBy('id', 'Desc')->Paginate(10); //Db üzerindeki yazılar çekiliyor
+        $data['articles'] = Article::orderBy('id', 'Desc')->Paginate(10)->withPath(url('yazilar/sayfa')); //Db üzerindeki yazılar çekiliyor
+
         return view('front.homepage', $data);
     }
 
@@ -58,7 +59,7 @@ class Homepage extends Controller
 
         $category = Category::where('slug', $slug)->first();
         $data['category'] = $category;
-        $data['articles'] = Article::where('category_id', $category->id)->orderBy('id', 'Desc')->Paginate(10);
+        $data['articles'] = Article::where('category_id', $category->id)->orderBy('id', 'Desc')->Paginate(10)->withPath(url('kategori/' . $slug . '/sayfa'));
         return view('front.category', $data);
     }
 
