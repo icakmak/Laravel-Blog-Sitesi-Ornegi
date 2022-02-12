@@ -9,7 +9,7 @@
                 @foreach ($articleHits as $ahit)
                 <li class="list-group-item list-group-item-action">
                     <div class="row">
-                        <a href="{{$ahit->slug}}" class="col-sm-10">{{Str::limit($ahit->title,20)}}</a>
+                        <a href="{{route('single',[$ahit->getCategory->slug, $ahit->slug])}}" class="col-sm-10">{{Str::limit($ahit->title,20)}}</a>
                         <span class="badge bg-success float-right col-sm-2">{{$ahit->hit}}</span>
                     </div>
                 </li>

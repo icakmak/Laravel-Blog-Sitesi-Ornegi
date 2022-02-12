@@ -25,6 +25,11 @@
             Eklenme : {{$article->created_at->diffForHumans()}}
         </div>
     </div>
+    <hr>
+    
+        @include('front.widgets.similiarWidget')
+    
+    
 </div>
 
 <div class="col-lg-3">
