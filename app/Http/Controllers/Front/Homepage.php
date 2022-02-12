@@ -15,7 +15,6 @@ class Homepage extends Controller
         $veri = [
             'hits' => Article::orderBy('hit', 'Desc')->limit(5)->get(), // Db üzerinde en çok okunan ilk 5 yazı çekiliyor
             'category' => Category::get(), //Db üzerinden kategoriler çekiliyor
-
         ];
         return $veri;
     }
@@ -44,5 +43,16 @@ class Homepage extends Controller
         $data['article']->increment('hit'); //her görüntülenme sayısında hit 1 değer arttırılıyor
 
         return view('front.single', $data);
+    }
+
+    public function category($slug)
+    {
+        $veri = $this->ortak();
+        $data['articleHits'] = $veri['hits'];
+        $data['categories'] = $veri['category'];
+
+        $category = Category::where('slug', $slug)->first();
+        $data['articles'] = Article::where('category_id', $category->id)->get();
+        return view('front.category', $data);
     }
 }

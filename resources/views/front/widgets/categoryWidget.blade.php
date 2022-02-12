@@ -9,7 +9,7 @@
                         @foreach ($categories as $category)
                         <li class="list-group-item list-group-item-action">
                             <div class="row">
-                                <a href="category/{{$category->slug}}" class="col-sm-10">{{$category->name}}</a>
+                                <a href="{{route('category',$category->slug)}}" class="col-sm-10">{{$category->name}}</a>
                                 <span class="badge bg-info float-right col-sm-2">{{$category->articleCount()}}</span>
                             </div>
                         </li>

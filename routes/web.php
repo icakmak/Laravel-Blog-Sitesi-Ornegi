@@ -15,4 +15,5 @@ use App\Http\Controllers\Front\Homepage;
 */
 
 Route::get('/', [Homepage::class, 'index'])->name('hamepage');
+Route::get('/kategori/{slug}', [Homepage::class, 'category'])->name('category');
 Route::get('/{category}/{slug}', [Homepage::class, 'single'])->name('single');
