@@ -28,8 +28,7 @@
     <hr>
     @endforeach
     <!-- Divider-->
-
-    <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div>
+    <div class="d-flex justify-content-center mb-4l">{{$articles->links('pagination::bootstrap-4')}}</div>
 </div>
 
 <div class="col-lg-3">

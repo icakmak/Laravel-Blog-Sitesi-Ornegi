@@ -6,6 +6,8 @@ use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Pagination\Paginator;
+
 
 class Homepage extends Controller
 {
@@ -19,13 +21,17 @@ class Homepage extends Controller
         return $veri;
     }
 
+    public function boot()
+    {
+        Paginator::useBootstrap();
+    }
 
     public function index()
     {
         $veri = $this->ortak();
         $data['articleHits'] = $veri['hits'];
         $data['categories'] = $veri['category'];
-        $data['articles'] = Article::orderBy('id', 'Desc')->get(); //Db üzerindeki yazılar çekiliyor
+        $data['articles'] = Article::orderBy('id', 'Desc')->Paginate(10); //Db üzerindeki yazılar çekiliyor
         return view('front.homepage', $data);
     }
 
@@ -33,7 +39,6 @@ class Homepage extends Controller
     {
         $category = Category::where('slug', $category)->first() ?? abort(404, 'Gitmek istediğiniz sayfa bulunamadı...'); //request'den gelen category ifadesi db'de yok ise hata sayfasına yönlendirmek için kullanılıyor
         $veri = $this->ortak();
-
 
         $data['articleHits'] = $veri['hits'];
         $data['categories'] = $veri['category'];
@@ -52,7 +57,30 @@ class Homepage extends Controller
         $data['categories'] = $veri['category'];
 
         $category = Category::where('slug', $slug)->first();
-        $data['articles'] = Article::where('category_id', $category->id)->get();
+        $data['category'] = $category;
+        $data['articles'] = Article::where('category_id', $category->id)->orderBy('id', 'Desc')->Paginate(10);
         return view('front.category', $data);
+    }
+
+    public function about()
+    {
+        $veri = $this->ortak();
+        $data = [
+            'baslik' => 'HAKKIMIZDA',
+            'articleHits' => $veri['hits'],
+            'categories' => $veri['category']
+        ];
+        return view('front.pages', $data);
+    }
+
+    public function contact()
+    {
+        $veri = $this->ortak();
+        $data = [
+            'baslik' => 'İletişim',
+            'articleHits' => $veri['hits'],
+            'categories' => $veri['category']
+        ];
+        return view('front.pages', $data);
     }
 }

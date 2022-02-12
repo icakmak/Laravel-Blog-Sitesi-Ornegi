@@ -7,7 +7,7 @@
                 <ul class="list-group list-group-flush">
                     @if (isset($categories))
                         @foreach ($categories as $category)
-                        <li class="list-group-item list-group-item-action">
+                        <li class="list-group-item list-group-item-action @if(Request::segment(2)==$category->slug) active text-light @endif">
                             <div class="row">
                                 <a href="{{route('category',$category->slug)}}" class="col-sm-10">{{$category->name}}</a>
                                 <span class="badge bg-info float-right col-sm-2">{{$category->articleCount()}}</span>
