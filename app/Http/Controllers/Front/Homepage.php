@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Front;
 
-use App\Models\Article;
-use App\Models\Category;
 use App\Models\Pages;
+use App\Models\Article;
 use App\Models\Contact;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Validator;
 
 
 class Homepage extends Controller
@@ -63,6 +64,20 @@ class Homepage extends Controller
 
     public function contactpost(Request $request)
     {
+        $rules = [
+            'name' => 'required|min:5',
+            'email' => 'required|email',
+            'topic' => 'required',
+            'message' => 'required|min:5'
+        ];
+
+        $validate = Validator::make($request->post(), $rules);
+
+        if ($validate->errors()) {
+            return redirect()->route('contact')->withErrors($validate)->withInput();
+            print_r($validate->errors());
+        }
+        die();
         $contact = new Contact;
         $contact->name = $request->name;
         $contact->email = $request->email;
