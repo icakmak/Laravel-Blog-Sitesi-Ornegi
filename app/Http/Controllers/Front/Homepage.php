@@ -71,25 +71,26 @@ class Homepage extends Controller
     {
         //TODO: Validations işlemi için kullanılıyor
         $rules = [
-            'name' => 'required|min:5',
+            'contactname' => 'required|min:5',
             'email' => 'required|email',
             'topic' => 'required',
-            'message' => 'required|min:5'
+            'contactmessage' => 'required|min:5'
         ];
 
         $validate = Validator::make($request->post(), $rules);
 
-        if ($validate->errors()) {
+        if ($validate->errors()->count() > 0) {
             return redirect()->route('contact')->withErrors($validate)->withInput();
-            print_r($validate->errors());
+            //Bu kısımda bir sorun var
+            //print_r($validate->errors());
         }
 
         //? DB 'ye veri ekleme işlemi için kullanılıyor
         $contact = new Contact;
-        $contact->name = $request->name;
+        $contact->name = $request->contactname;
         $contact->email = $request->email;
         $contact->topic = $request->topic;
-        $contact->message = $request->message;
+        $contact->message = $request->contactmessage;
         $contact->save(); //Kaydetme işlemi
         return redirect()->route('contact')->with('success', 'Mesajınız Başarılı Bir Şekilde İletilmiştir...');
         //Yukarıdaki kod ilede contact sayfasına yönlendiriliyor

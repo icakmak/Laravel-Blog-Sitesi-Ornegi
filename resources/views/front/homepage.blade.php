@@ -19,7 +19,7 @@
             </div>
         </a>
         <div class="figure-caption row">
-            <div class="col-sm-8"> Kategori : <a href="category/{{$art->getCategory->slug}}" class="a-link">{{$art->getCategory->name}}</a></div>
+            <div class="col-sm-8"> Kategori : <a href="{{route('category',$art->getCategory->slug)}}" class="a-link">{{$art->getCategory->name}}</a></div>
             <div class="col-sm-4 text-sm-end">{{$art->created_at->diffForHumans()}}</div>
         </div>
     </div>

@@ -159,6 +159,9 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'contactname' => 'Adınız ve Soyadınız',
+        'contactmessage' => 'Mesajınız'
+    ],
 
 ];
