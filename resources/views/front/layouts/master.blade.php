@@ -1,6 +1,7 @@
-//Master Layout Tanımlama
-@include('front.layouts.header') //Header include
-
-@yield('content') //İcerik include
-
-@include('front.layouts.footer') //Footer include
+{{-- Master Layout Tanımlama --}}
+{{-- Header include --}}
+@include('front.layouts.header')
+{{-- icerik include --}}
+@yield('content') 
+{{-- Footer include --}}
+@include('front.layouts.footer')

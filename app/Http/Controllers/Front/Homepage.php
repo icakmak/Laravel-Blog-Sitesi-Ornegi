@@ -27,14 +27,19 @@ class Homepage extends Controller
 
     public function index()
     {
-        $data['articles'] = Article::orderBy('id', 'Desc')->Paginate(10)->withPath(url('yazilar/sayfa')); //Db üzerindeki yazılar çekiliyor
+        //Db üzerindeki yazılar Tüm Yazılar çekiliyor
+        //Çekilen yazılar articles array ine aktarılıyor
+        //laravelin özelliği olan Paginate() fonksiyonu ile sayfa başına gösterilecek veri ayarlanıyor
+        //withPath() ile de adres satırında sayfalama öncesi kullanılması istenen veri/yazı kullanılıyor
+        $data['articles'] = Article::orderBy('id', 'Desc')->Paginate(10)->withPath(url('yazilar/sayfa'));
         return view('front.homepage', $data);
     }
 
     public function single($category, $slug)
     {
-        $category = Category::where('slug', $category)->first() ?? abort(404, 'Gitmek istediğiniz sayfa bulunamadı...'); //request'den gelen category ifadesi db'de yok ise hata sayfasına yönlendirmek için kullanılıyor
-
+        //abort() request'den gelen category ifadesi db'de yok ise hata sayfasına yönlendirmek için kullanılıyor
+        $category = Category::where('slug', $category)->first() ?? abort(404, 'Gitmek istediğiniz sayfa bulunamadı...');
+        //Benzer Yazıları Bulmak ve sayfada göstermek için kullanılıyor
         $data['similiars'] = Article::where('category_id', $category->id)->limit(3)->get();
         //Slugdan Gelen deger db'de aranıyor ve array'a aktarılıyor
         $data['article'] = Article::where('slug', $slug)->where('category_id', $category->id)->first() ?? abort(404, 'Gitmek istediğiniz sayfa bulunamadı...');
