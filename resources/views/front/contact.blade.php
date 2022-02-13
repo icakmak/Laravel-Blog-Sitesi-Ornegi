@@ -3,20 +3,20 @@
 @section('img',asset('front').'/assets/img/contact-bg.jpg')
 
 @section('content')
-@if (session('success'))
-    <div class="alert alert-success">
-    {{session('success')}}
-    </div>
-@endif
-@if ($errors->any())
-    <div class="alert alert-danger">
-    <ul>
-        @foreach($errors->all() as $err)
-            <li>{{$err}}</li>
-        @endforeach
-    </ul>
-    </div>
-@endif
+    @if (session('success'))
+        <div class="alert alert-success">
+        {{session('success')}}
+        </div>
+    @endif
+    @if ($errors->any())
+        <div class="alert alert-danger">
+        <ul>
+            @foreach($errors->all() as $err)
+                <li>{{$err}}</li>
+            @endforeach
+        </ul>
+        </div>
+    @endif
 <div class="col-md-10 col-lg-8 col-xl-7">
                         <p>Bizimle İletişime Geçebilirsiniz</p>
                         <div class="my-5">

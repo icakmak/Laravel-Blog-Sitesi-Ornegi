@@ -64,6 +64,7 @@ class Homepage extends Controller
 
     public function contactpost(Request $request)
     {
+        //TODO: Validations işlemi için kullanılıyor
         $rules = [
             'name' => 'required|min:5',
             'email' => 'required|email',
@@ -77,14 +78,15 @@ class Homepage extends Controller
             return redirect()->route('contact')->withErrors($validate)->withInput();
             print_r($validate->errors());
         }
-        die();
+
+        //? DB 'ye veri ekleme işlemi için kullanılıyor
         $contact = new Contact;
         $contact->name = $request->name;
         $contact->email = $request->email;
         $contact->topic = $request->topic;
         $contact->message = $request->message;
-        $contact->save();
+        $contact->save(); //Kaydetme işlemi
         return redirect()->route('contact')->with('success', 'Mesajınız Başarılı Bir Şekilde İletilmiştir...');
-        //return view('front.contact');
+        //Yukarıdaki kod ilede contact sayfasına yönlendiriliyor
     }
 }

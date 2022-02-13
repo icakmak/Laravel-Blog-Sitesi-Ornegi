@@ -1,7 +1,5 @@
 @extends('front.layouts.master') {{-- master.blade de parçaladığımız dokumanı çekiyoruz --}}
-
 @section('title','Anasayfa') {{-- header.blade de title alanında yield tanımlıyoruz ve o yield bizim başlık alanımız oluyor --}}
-
 {{-- master.blade içinde header ve footer arasında tanımladığınız content alanı --}}
 {{-- Blogumuzda ki değişen yazılarımız bu alanda olacak --}}
 @section('content')
