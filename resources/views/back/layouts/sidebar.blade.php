@@ -2,7 +2,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{asset('back/')}}/index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('admin.dashboard')}}">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -13,10 +13,10 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
-                <a class="nav-link" href="{{asset('back/')}}/index.html">
+            <li class="nav-item @if(Request::segment(2)=='panel')active @endif">
+                <a class="nav-link" href="{{route('admin.dashboard')}}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
+                    <span>Panel</span></a>
             </li>
 
             <!-- Divider -->
@@ -24,20 +24,20 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Interface
+                İçerik Yönetimi
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Components</span>
+            <li class="nav-item @if(Request::segment(2)=='makaleler') active @endif ">
+                <a class="nav-link @if(Request::segment(2)=='makaleler') in @else collapsed @endif" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-edit"></i>
+                    <span>Makaleler</span>
                 </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseTwo" class="collapse @if(Request::segment(2)=='makaleler') show active @endif" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="{{asset('back/')}}/buttons.html">Buttons</a>
-                        <a class="collapse-item" href="{{asset('back/')}}/cards.html">Cards</a>
+                        <h6 class="collapse-header">Makale İşlemleri:</h6>
+                        <a class="collapse-item @if(Request::segment(2)=='makaleler') active  @endif " href="{{route('admin.makaleler.index')}}"><i class="fa fa-list"></i> Tüm Makaler</a>
+                        <a class="collapse-item" href="{{route('admin.makaleler.create')}}"><i class="fa fa-plus"></i> Makale Ekle</a>
                     </div>
                 </div>
             </li>
@@ -68,12 +68,12 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Pages</span>
                 </a>
-                <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Login Screens:</h6>
                         <a class="collapse-item" href="{{asset('back/')}}/login.html">Login</a>
