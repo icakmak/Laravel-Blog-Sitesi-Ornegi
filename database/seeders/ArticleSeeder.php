@@ -29,6 +29,8 @@ class ArticleSeeder extends Seeder
                 'image' => $faker->imageUrl(800, 600, 'cats'),     // 'http://lorempixel.com/800/600/cats/'
                 'content' => $faker->paragraph(rand(5, 10)),
                 'slug' => Str::slug($title, '-'),
+                'created_at' => now(),
+                'updated_at' => now()
 
             ]);
         }

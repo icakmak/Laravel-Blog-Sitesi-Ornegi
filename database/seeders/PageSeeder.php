@@ -31,7 +31,6 @@ class PageSeeder extends Seeder
                     'image' => "https://smallbusinesstraininginc.com/wp-content/uploads/Business-la-gi-e1623418238104.jpeg",
                     'content' => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis itaque similique dolorum, hic cum dolores minus, distinctio ipsam obcaecati repudiandae deserunt, quia delectus dolor accusantium adipisci. Amet eligendi soluta ratione?",
                     'order' => $count
-
                 ]
             );
         }

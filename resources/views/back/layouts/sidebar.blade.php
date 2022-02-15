@@ -13,7 +13,7 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item @if(Request::segment(2)=='panel')active @endif">
+            <li class="nav-item @if(Request::segment(2)=='panel') active @endif">
                 <a class="nav-link" href="{{route('admin.dashboard')}}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Panel</span></a>
@@ -36,8 +36,8 @@
                 <div id="collapseTwo" class="collapse @if(Request::segment(2)=='makaleler') show active @endif" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Makale İşlemleri:</h6>
-                        <a class="collapse-item @if(Request::segment(2)=='makaleler') active  @endif " href="{{route('admin.makaleler.index')}}"><i class="fa fa-list"></i> Tüm Makaler</a>
-                        <a class="collapse-item" href="{{route('admin.makaleler.create')}}"><i class="fa fa-plus"></i> Makale Ekle</a>
+                        <a class="collapse-item @if(Request::segment(2)=='makaleler') active @endif" href="{{route('admin.makaleler.index')}}"><i class="fa fa-list"></i> Tüm Makaler</a>
+                        <a class="collapse-item @if(Request::segment(3)=='create') active @endif" href="{{route('admin.makaleler.create')}}"><i class="fa fa-plus"></i> Makale Ekle</a>
                     </div>
                 </div>
             </li>

@@ -21,6 +21,7 @@ class AuthController extends Controller
                 'password' => $request->password
             ])
         ) {
+            toastr()->success('Tekrar Hoşgeldin ', Auth::user()->name);
             return redirect()->route('admin.dashboard');
         }
         return redirect()->route('admin.login')->withErrors('Email adresi veya Şifre hatalı!');
